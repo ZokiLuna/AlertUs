@@ -1,0 +1,37 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Web Application Template
+message: >-
+  Repositório padrão para o Eixo 1 - Projeto 1: Aplicações
+  Web da PUC Minas.
+type: software
+authors:
+    //alunos
+  - given-names: Fernando
+    family-names: Fernando P. Barbosa Souza
+    email: fernando.souza@sga.pucminas.br
+    affiliation: PUC Minas
+  - given-names: Hugo
+    name-particle: 'B '
+    family-names: de Paula
+    name-suffix: Prof.
+    email: hugo@pucminas.br
+    affiliation: PUC Minas
+    //professor
+    given-names: Clóvis
+    family-names: Clóvis Lemos Tavares
+    email: clovis.tavares@pucminas.br
+    affiliation: PUC Minas
+repository-code: >-
+  https://github.com/ICEI-PUC-Minas-PMV-SI/WebApplicationProject-Template
+abstract: >-
+ Projeto desenvolvimento no primeiro semestre de sistemas de informação. O projeto se trata de um site construido em front end que se chama Bairro Seguro. O app permite adicionar ocorrencias de classes diferentes de problemas que ocorrem em seu bairro ou próximo. Conectando a população e aumentando o cuidado.
+keywords:
+  - Desenvolvimento Web
+  - HTML
+  - CSS
+  - JavaScript
+  - Template
+date-released: '12-06-2026'

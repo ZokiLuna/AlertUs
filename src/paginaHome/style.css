@@ -1,0 +1,337 @@
+/* ── Topbar ─────────────────────────────────────────────────────────── */
+.topbar {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 24px; border-bottom:1px solid rgba(255,255,255,0.06);
+  background:rgba(14,18,37,0.95);
+}
+.topbar h1 { margin:0; color:var(--brand); font-size:clamp(1.1rem,2vw,1.6rem); }
+.topbar-user { color:var(--muted); font-size:0.9rem; }
+
+/* ── Layout ─────────────────────────────────────────────────────────── */
+.layout { max-width:1100px; margin:0 auto 32px; padding:0 22px; display:grid; gap:18px; }
+
+/* ── Busca ──────────────────────────────────────────────────────────── */
+.search-wrap { display:flex; gap:10px; flex-wrap:wrap; }
+.search-wrap input {
+  flex:1; min-width:180px; height:50px;
+  border:1px solid rgba(255,255,255,0.08); border-radius:999px;
+  background:rgba(18,30,24,0.85); color:#ebf4eb; padding:0 18px; font-size:1rem; font-family:inherit;
+}
+.search-wrap input:focus { outline:none; border-color:#47c661; }
+.filtro-select {
+  height:50px; border:1px solid rgba(255,255,255,0.08); border-radius:999px;
+  background:rgba(18,30,24,0.85); color:#ebf4eb; padding:0 16px;
+  font-size:0.88rem; font-family:inherit; appearance:none; cursor:pointer;
+}
+.filtro-select:focus { outline:none; border-color:#47c661; }
+
+/* ── Mapa ───────────────────────────────────────────────────────────── */
+.map-card {
+  position:relative;
+  height:460px;
+  border-radius:18px;
+  border:2px solid rgba(255,255,255,0.08);
+  background:#d8dfdf;
+}
+#map {
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  width:100%;
+  height:100%;
+  cursor:crosshair;
+  z-index:1;
+}
+.map-hint {
+  position:absolute; left:12px; bottom:12px; z-index:500;
+  background:rgba(23,29,53,0.92); color:#f2f4fa;
+  padding:7px 13px; border-radius:9px; font-size:0.82rem;
+  pointer-events:none;
+}
+
+/* ── Lista de ocorrências ───────────────────────────────────────────── */
+.occurrences { display:grid; gap:10px; }
+.occurrences-title { font-size:1.3rem; font-weight:700; color:var(--text); }
+#listaOcorrencias { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+
+.ocard {
+  background:rgba(23,29,53,0.9); border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px; padding:14px 16px; display:grid; gap:7px;
+  cursor:pointer; transition:border-color .2s,transform .15s;
+}
+.ocard:hover { border-color:rgba(71,198,97,0.38); transform:translateY(-2px); }
+.card-top,.card-foot { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+.card-foot { justify-content:space-between; }
+.card-emoji { font-size:1.3rem; }
+.card-cat { font-weight:700; font-size:13px; }
+.card-loc,.card-desc { color:#c8cedf; font-size:12px; line-height:1.4; }
+.tag-edit { font-size:10px; color:var(--muted); font-style:italic; }
+.card-mid { font-size:11px; color:var(--muted); }
+.card-acts { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+.card-foot > span:first-child { font-size:11px; color:var(--muted); }
+
+.badge { font-size:11px; padding:2px 8px; border-radius:999px; font-weight:600; }
+.grav.gv-ext { background:rgba(180,0,0,0.45);   color:#ffcece; }
+.grav.gv-per { background:rgba(180,80,0,0.4);   color:#ffd8b2; }
+.grav.gv-ate { background:rgba(160,120,0,0.35); color:#f0d472; }
+.cep         { background:rgba(255,255,255,0.07); color:var(--muted); }
+.badge-den   { font-size:11px; padding:2px 8px; border-radius:999px; background:rgba(180,0,0,0.3); color:#ff9999; }
+
+.btn-card { border:none; border-radius:999px; padding:5px 11px; font-size:11px; cursor:pointer; transition:filter .15s; font-family:inherit; }
+.btn-edit { background:#2a5a8a; color:#fff; }
+.btn-del  { background:#9a3333; color:#fff; }
+.btn-den  { background:rgba(180,50,50,0.2); color:#ff9999; font-size:13px; }
+.btn-com  { background:rgba(255,255,255,0.07); color:var(--muted); }
+.btn-card:hover { filter:brightness(1.25); }
+.empty-msg { color:var(--muted); text-align:center; padding:24px 0; font-size:14px; }
+
+/* Card de emergência */
+.ocard-emergencia {
+  border:2px solid rgba(220,38,38,0.7) !important;
+  background:rgba(70,8,8,0.75) !important;
+  animation:cardEmerg 2s ease-in-out infinite;
+}
+@keyframes cardEmerg {
+  0%,100% { box-shadow:0 0 0 0 rgba(220,38,38,0); }
+  50%     { box-shadow:0 0 0 6px rgba(220,38,38,0.25); }
+}
+.emerg-tag {
+  font-size:11px; font-weight:800; padding:2px 10px;
+  border-radius:999px; background:rgba(220,38,38,0.5);
+  color:#ffcece; letter-spacing:0.4px;
+}
+
+/* ── Comentários inline ─────────────────────────────────────────────── */
+.com-area { border-top:1px solid rgba(255,255,255,0.06); padding-top:10px; }
+.coms-lista { display:grid; gap:7px; margin-bottom:10px; }
+.com-item { background:rgba(255,255,255,0.04); border-radius:9px; padding:9px 11px; position:relative; }
+.com-autor { font-size:11px; font-weight:700; color:#47c661; margin-bottom:3px; }
+.com-autor span { font-weight:400; color:var(--muted); margin-left:5px; }
+.com-txt { font-size:13px; color:#c8cedf; line-height:1.4; }
+.com-del { position:absolute; top:7px; right:7px; background:none; border:none; color:var(--muted); font-size:11px; cursor:pointer; }
+.com-del:hover { color:#ff8888; }
+.com-vazio { font-size:12px; color:var(--muted); text-align:center; padding:6px 0; }
+.com-form { display:flex; gap:7px; }
+.com-form textarea { flex:1; background:rgba(18,30,24,0.85); border:1px solid rgba(255,255,255,0.08); border-radius:9px; color:#ebf4eb; padding:7px 11px; font-size:12px; font-family:inherit; resize:none; }
+.com-form textarea:focus { outline:none; border-color:#47c661; }
+.com-send { border:none; border-radius:9px; padding:7px 13px; background:#235f3f; color:#f6fff6; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; }
+
+/* ── Seção de ações (formulário sempre visível) ──────────────────────── */
+.actions { display:grid; gap:12px; }
+
+/* Indicador de local selecionado */
+.loc-box {
+  padding:12px 16px; border-radius:12px;
+  font-size:13px; font-weight:500; transition:all .3s;
+}
+.loc-vazio {
+  background:rgba(255,255,255,0.04);
+  border:2px dashed rgba(255,255,255,0.12);
+  color:var(--muted);
+}
+.loc-selecionado {
+  background:rgba(35,95,63,0.25);
+  border:2px solid rgba(71,198,97,0.35);
+  color:#b9ffd1;
+}
+
+/* Busca CEP */
+.cep-row { display:grid; grid-template-columns:1fr auto; gap:10px; }
+.cep-row input {
+  height:50px; border:1px solid rgba(255,255,255,0.08); border-radius:10px;
+  background:rgba(18,30,24,0.85); color:#ebf4eb; padding:0 14px;
+  font-size:1rem; font-family:inherit;
+}
+.cep-row input:focus { outline:none; border-color:#47c661; }
+#buscarCepBtn {
+  border:none; border-radius:10px; padding:0 18px; height:50px;
+  font-size:1rem; font-weight:700; color:#f6fff6; background:#235f3f;
+  cursor:pointer; white-space:nowrap;
+}
+#buscarCepBtn:hover { filter:brightness(1.1); }
+#buscarCepBtn:disabled { opacity:.6; cursor:not-allowed; }
+
+/* Formulário de ocorrência — SEMPRE VISÍVEL */
+.form-occurrence { display:grid; gap:12px; }
+.form-2col { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.fgroup { display:grid; gap:5px; }
+.flabel { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.4px; text-transform:uppercase; }
+.flabel-hint { text-transform:none; font-weight:400; font-size:10px; }
+
+.form-occurrence select,
+.form-occurrence textarea {
+  border:1px solid rgba(255,255,255,0.08); border-radius:10px;
+  background:rgba(18,30,24,0.85); color:#ebf4eb;
+  padding:10px 12px; font-size:1rem; font-family:inherit; width:100%;
+}
+.form-occurrence select { height:46px; appearance:none; }
+.form-occurrence select:focus,
+.form-occurrence textarea:focus { outline:none; border-color:#47c661; }
+.form-occurrence textarea { resize:vertical; }
+
+/* Upload de mídia */
+.upload-area {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:14px; border:2px dashed rgba(71,198,97,0.3); border-radius:12px;
+  background:rgba(18,30,24,0.5); cursor:pointer; text-align:center;
+  transition:border-color .2s,background .2s;
+}
+.upload-area:hover,
+.upload-area.drag-over { border-color:#47c661; background:rgba(71,198,97,0.06); }
+.midia-preview { display:flex; flex-wrap:wrap; gap:7px; margin-top:6px; }
+.midia-item {
+  position:relative; width:68px; height:68px;
+  border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);
+}
+.midia-item img { width:100%; height:100%; object-fit:cover; }
+.midia-vid { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:1.8rem; background:rgba(0,0,0,0.25); }
+.midia-rm {
+  position:absolute; top:3px; right:3px; width:18px; height:18px;
+  border:none; border-radius:50%; background:rgba(0,0,0,0.75); color:#fff;
+  font-size:9px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+
+/* Botões de ação */
+.form-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.btn-relatar {
+  border:none; border-radius:10px; padding:14px;
+  font-size:1rem; font-weight:700; color:#f6fff6; background:#235f3f;
+  cursor:pointer; transition:filter .15s;
+}
+.btn-relatar:hover { filter:brightness(1.1); }
+.btn-sec {
+  border:none; border-radius:10px; padding:14px;
+  font-size:1rem; font-weight:700; color:#fff; background:#7a4343;
+  cursor:pointer;
+}
+
+/* ── Botão de emergência (fora do mapa, canto direito) ──────────────── */
+.emerg-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: -44px; /* sobe para ficar "sobre" a borda inferior do mapa */
+  margin-right: 16px;
+  position: relative;
+  z-index: 10;
+  pointer-events: none; /* o wrapper não captura eventos */
+}
+.emerg-label-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.btn-emergencia {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.3);
+  background: linear-gradient(135deg, #9b1c1c, #dc2626);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 4px 20px rgba(220,38,38,0.7);
+  transition: transform .15s, box-shadow .15s;
+  padding: 0;
+  position: relative;
+  pointer-events: all; /* garante que o botão recebe cliques */
+}
+.btn-emergencia:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(220,38,38,0.9);
+}
+.btn-emergencia:active { transform: scale(0.96); }
+
+.emerg-icon { font-size: 1.5rem; line-height: 1; }
+.emerg-txt  { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; }
+
+.emerg-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 3px solid rgba(220,38,38,0.8);
+  animation: ringPulse 1.5s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes ringPulse {
+  0%   { transform: scale(1);    opacity: .9; }
+  100% { transform: scale(1.5);  opacity: 0;  }
+}
+
+/* Modo emergência — destaca o formulário inteiro */
+.form-occurrence.modo-emergencia {
+  border:2px solid rgba(220,38,38,0.6);
+  border-radius:14px; padding:14px;
+  background:rgba(80,8,8,0.35);
+  animation:emergBorder 2s ease-in-out infinite;
+}
+@keyframes emergBorder {
+  0%,100% { border-color:rgba(220,38,38,0.6); }
+  50%     { border-color:rgba(220,38,38,1); }
+}
+.form-occurrence.modo-emergencia .flabel { color:#fca5a5; }
+.emerg-label {
+  display:none; background:rgba(180,0,0,0.4);
+  border:1px solid rgba(220,38,38,0.5); border-radius:10px;
+  padding:10px 14px; color:#ffcece; font-size:13px;
+  font-weight:600; text-align:center;
+}
+.form-occurrence.modo-emergencia .emerg-label { display:block; }
+
+/* Feedback */
+.feedback { margin:0; min-height:20px; font-size:13px; color:var(--muted); }
+.feedback.success { color:#b9ffd1; }
+.feedback.error   { color:#ffbaba; }
+
+/* ── Ícones no mapa ─────────────────────────────────────────────────── */
+.map-icon {
+  width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+  font-size:30px; filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));
+}
+.map-icon.pulse { animation:iconPulse 1.4s ease-in-out infinite; }
+@keyframes iconPulse {
+  0%,100% { filter:drop-shadow(0 0 4px rgba(220,38,38,.5)); transform:scale(1); }
+  50%     { filter:drop-shadow(0 0 12px rgba(220,38,38,.9)); transform:scale(1.15); }
+}
+.sel-pin { width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:28px; }
+.popup { line-height:1.5; font-size:13px; }
+
+/* ── Modais ─────────────────────────────────────────────────────────── */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.75); z-index:1000;
+  align-items:center; justify-content:center; backdrop-filter:blur(4px);
+}
+.modal-overlay.vis { display:flex; }
+.modal-box {
+  background:linear-gradient(180deg,#171c33 0%,#14192d 100%);
+  border:1px solid rgba(255,255,255,0.08); border-radius:18px;
+  padding:26px; width:min(92vw,460px);
+  animation:mIn .2s ease;
+}
+@keyframes mIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.modal-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+.modal-hdr h2 { font-size:1.1rem; color:#f4f6ff; margin:0; }
+.modal-x { background:rgba(255,255,255,0.08); border:none; border-radius:50%; width:28px; height:28px; color:#fff; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.mform { display:grid; gap:11px; }
+.minput { width:100%; background:rgba(18,30,24,0.85); border:1px solid rgba(255,255,255,0.08); border-radius:9px; color:#ebf4eb; padding:9px 12px; font-size:0.95rem; font-family:inherit; appearance:none; }
+select.minput { height:44px; }
+.minput:focus { outline:none; border-color:#47c661; }
+.mbtns { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.mbtn-ok     { border:none; border-radius:9px; padding:12px; font-weight:700; color:#f6fff6; background:#235f3f; cursor:pointer; font-family:inherit; }
+.mbtn-cancel { border:none; border-radius:9px; padding:12px; font-weight:700; color:#fff; background:#7a4343; cursor:pointer; font-family:inherit; }
+
+/* ── Responsivo ─────────────────────────────────────────────────────── */
+@media (max-width:760px) {
+  .layout { padding:0 12px; }
+  .search-wrap { flex-direction:column; }
+  .cep-row, .form-actions, .form-2col, .mbtns { grid-template-columns:1fr; }
+  .map-card { height:55vh; }
+  .topbar { padding:10px 14px; }
+}

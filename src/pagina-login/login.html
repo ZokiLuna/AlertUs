@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bairro Seguro | Entrar</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="stylesheet" href="style-login.css">
+</head>
+<body>
+  <main class="page-wrap">
+    <section class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <h1>Bairro Seguro</h1>
+    </section>
+
+    <section class="card">
+      <form id="loginForm" class="form" novalidate>
+        <div id="msg" class="msg" role="alert"></div>
+
+        <label class="field" for="email_login">
+          <span class="sr-only">E-mail</span>
+          <span class="field-control has-leading">
+            <span class="field-icon icon-mail" aria-hidden="true"></span>
+            <input id="email_login" name="email" type="email" placeholder="E-mail" required>
+          </span>
+        </label>
+
+        <label class="field" for="senha_login">
+          <span class="sr-only">Senha</span>
+          <span class="field-control has-leading has-trailing">
+            <span class="field-icon icon-lock" aria-hidden="true"></span>
+            <input id="senha_login" name="senha" type="password" placeholder="Senha" required>
+            <button class="field-toggle icon-eye-off" type="button" data-toggle-password="senha_login" aria-label="Mostrar ou ocultar senha"></button>
+          </span>
+        </label>
+
+        <div class="form-row">
+          <a class="link" href="../paginaRecuperarSenha/index.html">Esqueceu sua senha?</a>
+        </div>
+
+        <button class="action" type="submit">Entrar</button>
+
+        <p class="register-link">Ainda nao tem uma conta? <a class="link" href="../paginaCadastro/cadastre-se.html"><strong>Registrar</strong></a></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="../assets/utils.js"></script>
+  <script src="script-login.js"></script>
+</body>
+</html>
